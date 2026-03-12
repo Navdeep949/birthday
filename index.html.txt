@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday ❤️</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background: linear-gradient(120deg,#ff9a9e,#fad0c4);
+margin:0;
+overflow-x:hidden;
+}
+
+h1{
+color:white;
+font-size:45px;
+margin-top:40px;
+}
+
+.section{
+background:white;
+margin:30px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+img{
+width:200px;
+border-radius:12px;
+margin:10px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+background:red;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:darkred;
+}
+
+/* countdown */
+
+#countdown{
+font-size:30px;
+color:white;
+margin-top:20px;
+}
+
+/* hearts */
+
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+color:red;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+/* typing */
+
+#typing{
+font-size:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Happy Birthday My Love ❤️</h1>
+
+<div id="countdown"></div>
+
+<div class="section">
+<p id="typing"></p>
+</div>
+
+<div class="section">
+<h2>Our Memories 📸</h2>
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+
+<div class="section">
+<button onclick="surprise()">Click For Surprise 🎁</button>
+<p id="secret"></p>
+</div>
+
+<script>
+
+/* countdown */
+
+var birthday = new Date("July 20, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+var now = new Date().getTime();
+var distance = birthday - now;
+
+var days = Math.floor(distance / (1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+
+},1000);
+
+
+/* typing message */
+
+var text="You are the most special person in my life. I am lucky to have you ❤️";
+var i=0;
+
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,50);
+}
+}
+
+typing();
+
+/* surprise */
+
+function surprise(){
+document.getElementById("secret").innerHTML =
+"I love you today, tomorrow and forever ❤️";
+}
+
+/* floating hearts */
+
+setInterval(function(){
+
+var heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+heart.remove();
+},5000);
+
+},300);
+
+</script>
+
+</body>
+</html>
